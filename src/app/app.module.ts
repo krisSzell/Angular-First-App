@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UsersComponent } from './users/users.component';
 import { PostsComponent } from './posts/posts.component';
 import { HomeComponent } from './home/home.component';
+import { UsersService } from './users.service';
 
 import { globalRoutes } from './global-routes';
 
@@ -26,7 +27,7 @@ import { globalRoutes } from './global-routes';
     HttpModule,
     RouterModule.forRoot(globalRoutes)
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
