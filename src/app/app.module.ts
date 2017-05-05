@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -10,6 +10,8 @@ import { UsersComponent } from './users/users.component';
 import { PostsComponent } from './posts/posts.component';
 import { HomeComponent } from './home/home.component';
 import { UsersService } from './users.service';
+import { UserFormComponent } from './user-form/user-form.component';
+import { PreventUnsavedChangesGuard } from './prevent-unsaved-changes-guard.service';
 
 import { globalRoutes } from './global-routes';
 
@@ -19,15 +21,17 @@ import { globalRoutes } from './global-routes';
     NavbarComponent,
     UsersComponent,
     PostsComponent,
-    HomeComponent
+    HomeComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(globalRoutes)
   ],
-  providers: [UsersService],
+  providers: [UsersService, PreventUnsavedChangesGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
