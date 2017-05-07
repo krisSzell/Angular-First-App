@@ -1,20 +1,20 @@
 <h1>Users</h1>
 <a class="btn btn-info" routerLink="/users/new">Add user</a>
 <table class="table table-hover">
-    <thead class="thead-inverse">
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of users">
-            <td>{{user.name}}</td>
-            <td>{{user.email}}</td>
-            <td><i class="fa fa-pencil-square-o"></i></td>
-            <td><i class="fa fa-trash-o"></i></td>
-        </tr>
-    </tbody>
+  <thead class="thead-inverse">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td><a [routerLink]="['/users', user.id]"><i class="fa fa-pencil-square-o"></i></a></td>
+      <td><i (click)="delete(user)" class="fa fa-trash-o clickable"></i></td>
+    </tr>
+  </tbody>
 </table>

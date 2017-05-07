@@ -7,6 +7,7 @@ import { PreventUnsavedChangesGuard } from './prevent-unsaved-changes-guard.serv
 
 export const globalRoutes: Routes = [
     { path: 'users/new', component: UserFormComponent, canDeactivate: [PreventUnsavedChangesGuard] },
+    { path: 'users/:id', component: UserFormComponent, canDeactivate: [PreventUnsavedChangesGuard] },
     { path: 'users', component: UsersComponent },
     { path: 'posts', component: PostsComponent },
     { path: '', component: HomeComponent },

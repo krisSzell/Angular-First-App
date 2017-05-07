@@ -8,22 +8,39 @@ import { UserFormComponent } from './user-form/user-form.component';
 @Injectable()
 export class UsersService {
 
+  usersUrl = 'http://jsonplaceholder.typicode.com/users/';
+
+  headers = new Headers({
+    'Content-Type': 'application/json'
+  });
+  options = new RequestOptions({
+    headers: this.headers
+  });
+
   constructor(private _http: Http) { }
 
   getUsers() {
-    return this._http.get('http://jsonplaceholder.typicode.com/users')
+    return this._http.get(this.usersUrl)
       .map(response => response.json());
   }
 
-  saveUser(user) {
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    let options = new RequestOptions({
-      headers: headers
-    });
+  getUser(id) {
+    return this._http.get(this.usersUrl + id)
+      .map(res => res.json());
+  }
 
-    return this._http.post('http://jsonplaceholder.typicode.com/users', JSON.stringify(user), options)
+  saveUser(user) {
+    return this._http.post(this.usersUrl, JSON.stringify(user), this.options)
+      .map(res => res.json());
+  }
+
+  updateUser(user, id) {
+    return this._http.put(this.usersUrl + id, JSON.stringify(user), this.options)
+      .map(res => res.json());
+  }
+
+  deleteUser(id) {
+    return this._http.delete(this.usersUrl + id)
       .map(res => res.json());
   }
 }
