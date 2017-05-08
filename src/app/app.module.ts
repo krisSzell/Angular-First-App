@@ -11,6 +11,7 @@ import { PostsComponent } from './posts/posts.component';
 import { HomeComponent } from './home/home.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { SpinnerComponent } from './spinner.component';
+import { PaginationComponent } from './pagination.component';
 import { UsersService } from './users.service';
 import { PostsService } from './posts.service';
 import { PreventUnsavedChangesGuard } from './prevent-unsaved-changes-guard.service';
@@ -25,7 +26,8 @@ import { globalRoutes } from './global-routes';
     PostsComponent,
     HomeComponent,
     UserFormComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

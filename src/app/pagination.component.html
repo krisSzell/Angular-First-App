@@ -1,0 +1,13 @@
+<nav *ngIf="items.length > pageSize">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [class.disabled]="currentPage == 1" (click)="previous()">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item" [class.active]="currentPage == page" *ngFor="let page of pages" (click)="changePage(page)">
+      <a class="page-link">{{page}}</a>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage == pages.length" (click)="next()">
+      <a class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>

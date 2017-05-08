@@ -8,8 +8,10 @@
         value="{{user.id}}">{{user.name}}</option>
     </select>
     <ul class="list-group">
-      <li class="list-group-item post-title" *ngFor="let post of posts" (click)="selectPost(post)" [class.active]="selectedPost == post">{{post.title}}</li>
+      <li class="list-group-item post-title" *ngFor="let post of pagedPosts" (click)="selectPost(post)" [class.active]="selectedPost == post">{{post.title}}</li>
     </ul>
+    <pagination [items]="posts" (page-changed)="onPageChanged($event)"></pagination>
+
   </div>
   <div class="col-md-6" *ngIf="selectedPost">
     <div class="card">
