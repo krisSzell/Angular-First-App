@@ -1,0 +1,17 @@
+.post-title {
+    cursor: pointer;
+}
+
+.post-title:hover {
+    background-color: #18BC9C;
+    border-color: transparent;
+}
+
+.post-title.active {
+    background-color: #18BC9C;
+    border-color: transparent;
+}
+
+.rounded {
+    border-radius: 50%;
+}

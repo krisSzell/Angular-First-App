@@ -12,8 +12,19 @@ export class PostsService {
 
   constructor(private _http: Http) { }
 
-  getPosts() {
-    return this._http.get(this.postsUrl)
+  getPosts(userId?) {
+    if (userId) {
+      return this._http.get(this.postsUrl + '?userId=' + userId)
+        .map(res => res.json());
+    } else {
+      return this._http.get(this.postsUrl)
+        .map(res => res.json());
+    }
+
+  }
+
+  getComments(postId) {
+    return this._http.get(this.postsUrl + "/" + postId + '/comments')
       .map(res => res.json());
   }
 }
