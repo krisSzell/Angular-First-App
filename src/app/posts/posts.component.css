@@ -5,11 +5,17 @@
 .post-title:hover {
     background-color: #18BC9C;
     border-color: transparent;
+    color: white;
 }
 
 .post-title.active {
     background-color: #18BC9C;
     border-color: transparent;
+}
+
+.card-header {
+    background-color: #18BC9C;
+    color: white;
 }
 
 .rounded {

@@ -2,9 +2,10 @@
 <div class="row">
   <div class="col-md-6">
     <spinner [visible]="postsLoading"></spinner>
-    <select #userId class="custom-select" (change)=filterPosts(userId.value)>
+    <select #userId class="form-control" (change)="loadPosts({ userId: userId.value })">
       <option selected value="">Select an user &hellip;</option>
-      <option *ngFor="let user of users" value="{{user.id}}">{{user.name}}</option>
+      <option *ngFor="let user of users" 
+        value="{{user.id}}">{{user.name}}</option>
     </select>
     <ul class="list-group">
       <li class="list-group-item post-title" *ngFor="let post of posts" (click)="selectPost(post)" [class.active]="selectedPost == post">{{post.title}}</li>
@@ -23,7 +24,7 @@
       </div>
       <div class="card-block" *ngFor="let comment of selectedPost.comments">
         <div class="media">
-          <img class="d-flex mr-3 rounded" src="http://lorempixel.com/100/100/people?random=1" alt="Generic placeholder image">
+          <img class="d-flex mr-3 rounded" src="http://lorempixel.com/100/100/people?random" alt="Generic placeholder image">
           <div class="media-body">
             <h6 class="mt-0"><strong>{{comment.name}}</strong></h6>
             {{comment.body}}

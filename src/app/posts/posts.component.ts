@@ -21,13 +21,8 @@ export class PostsComponent implements OnInit {
   constructor(private _postsService: PostsService, private _usersService: UsersService) { }
 
   ngOnInit() {
-    this._usersService.getUsers()
-      .subscribe(users => this.users = users);
-
-    this._postsService.getPosts()
-      .subscribe(posts => this.posts = posts,
-      null,
-      () => { this.postsLoading = false; });
+    this.loadUsers();
+    this.loadPosts();
   }
 
   selectPost(post: Post) {
@@ -39,12 +34,18 @@ export class PostsComponent implements OnInit {
       () => { this.commentsLoading = false; });
   }
 
-  filterPosts(userId) {
+  private loadPosts(filter?) {
     this.postsLoading = true;
-    this._postsService.getPosts(userId)
+    this.selectedPost = null;
+    this._postsService.getPosts(filter)
       .subscribe(posts => this.posts = posts,
       null,
       () => { this.postsLoading = false; });
+  }
+
+  private loadUsers() {
+    this._usersService.getUsers()
+      .subscribe(users => this.users = users);
   }
 
 
